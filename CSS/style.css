@@ -34,6 +34,17 @@
     display: block;
     text-align: center;
 }
+.item{
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+.item img{
+    max-width: 100%;
+}
+.item-text br{
+    padding: 20px;
+}
 @media (max-width: 600px){
 .product-list{
         display: grid;
