@@ -88,18 +88,21 @@
 }
 .page-title{
     width: 100%;
+    margin: 0 80px;
 }
 .item{
     display: flex;
     flex-direction: column;
+    gap: 1rem;
 }
 .item img{
     align-items: center;
-    width: 300px;
+    width: 350px;
+    margin: 0 80px;
 }
 .item-text{
-    margin: 0 30vw;
-    width: 100%;
+    margin: 0 25vw;
+    width: 120%;
 }
 
 }
