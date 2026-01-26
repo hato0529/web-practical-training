@@ -34,16 +34,24 @@
     display: block;
     text-align: center;
 }
+.page-title{
+    width: 100%;
+    margin: 0 100px;
+}
 .item{
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    gap: 8rem;
+}
+.item-img{
+    width: 40%;
 }
 .item img{
-    max-width: 100%;
+    width: 100%;
+    margin: 0 100px;
 }
-.item-text br{
-    padding: 20px;
+.item-text p{
+    width: 62%;
 }
 @media (max-width: 600px){
 .product-list{
@@ -78,4 +86,20 @@
 .link-text{
     padding: 15px;
 }
+.page-title{
+    width: 100%;
+}
+.item{
+    display: flex;
+    flex-direction: column;
+}
+.item img{
+    align-items: center;
+    width: 300px;
+}
+.item-text{
+    margin: 0 30vw;
+    width: 100%;
+}
+
 }
