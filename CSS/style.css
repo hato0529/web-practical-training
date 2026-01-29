@@ -1,8 +1,18 @@
 @charset "UTF-8";
+/* 全体 */
 .wrapper{
     /* padding:10px 100px 10px 100px; */
     margin: 15px;
 }
+.page-title{
+    width: 100%;
+    margin-left: 4rem;
+}
+#header{
+    display: flex;
+    justify-content: space-between;
+}
+/* index */
 .product-list{
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -15,10 +25,6 @@
     margin: 0 auto;
     /* border: 3px solid rgb(189, 126, 45);
     border-radius: 10px; */
-}
-#header{
-    display: flex;
-    justify-content: space-between;
 }
 .menu{
     display: flex;
@@ -34,10 +40,7 @@
     display: block;
     text-align: center;
 }
-.page-title{
-    width: 100%;
-    margin: 0 100px;
-}
+/* item */
 .item{
     display: flex;
     justify-content: space-between;
@@ -52,6 +55,31 @@
 }
 .item-text p{
     width: 62%;
+}
+/* company */
+table{
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+    margin-left: 5rem;
+}
+.info th{
+    text-decoration: none;
+}
+.info td{
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 2rem 0rem 2rem 0rem;
+    width: 55%;
+}
+.info tr:last-child td{
+    border-bottom: none;
+}
+.map{
+    margin-left: 5rem;
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);
+}
+.map iframe{
+    width: 600px;
 }
 @media (max-width: 600px){
 .product-list{
@@ -104,5 +132,23 @@
     margin: 0 25vw;
     width: 120%;
 }
-
+.info th{
+    max-width: 80px;
+}
+#company .info  th,
+#company .info  td {
+    display: block;
+    width: 100%;
+}
+.info td{
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    padding: 10px 10px 10px 10px;
+}
+.map{
+    margin-left: 3rem;
+}
+.map iframe{
+    width: 400px;
+    height: 400px;
+}
 }
