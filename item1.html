@@ -14,7 +14,19 @@
     <body>
         <header id="header" class="wrapper">
             <h1 class="site-title"><a href="index.html"><img src="img/logo.svg" alt="Furniture Design"></a></h1>
-            <nav><input type="checkbox"></nav>
+            <button class="hamburger" aria-label="メニュー" aria-controls="nav-menu" aria-expanded="false">
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+    <span class="hamburger__line"></span>
+    </button>
+
+    <nav id="nav-menu" class="nav" aria-hidden="true">
+    <ul class="nav__list">
+        <li class="nav__item"><a href="index.html" class="nav__link">HOME</a></li>
+        <li class="nav__item"><a href="item1.html" class="nav__link">ABOUT</a></li>
+        <li class="nav__item"><a href="company.html" class="nav__link">COMPANY</a></li>
+        <li class="nav__item"><a href="products.html" class="nav__link">hoge</a></li>
+    </ul>
         </header>
         <main>
             <div class="content wrapper">
