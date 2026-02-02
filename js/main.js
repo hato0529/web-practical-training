@@ -22,3 +22,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     });
 });
+// モーダル
+    const open1 = document.querySelectorAll("#open");
+    const close1 = document.querySelector("#close");
+    const modal = document.querySelector("#modal");
+    const mask = document.querySelector("#mask");
+    open1.addEventListener("click",()=>{
+        modal.animate({
+        opacity: [0,1],
+        visibility: "visible"
+    },
+    {
+        duration: 1000,
+        fill: "forwards"
+    });
+    mask.animate({
+        opacity: [0,1],
+        visibility: "visible"
+    },
+    {
+        duration: 1000,
+        fill: "forwards"
+    });
+    });
+close1.addEventListener("click",()=>{
+    modal.animate({
+        opacity: [1,0],
+        visibility: "hidden"
+    },
+    {
+        duration: 1000,
+        fill: "forwards"
+    });
+    mask.animate({
+        opacity: [1,0],
+        visibility: "hidden"
+    },
+    {
+        duration: 1000,
+        fill: "forwards"
+    });
+});

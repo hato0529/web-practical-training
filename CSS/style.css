@@ -101,6 +101,34 @@
     gap: 15px;
     list-style: none;
 }
+/* モーダル */
+#open,
+#close {
+    background: #ed8;
+    border: 3px solid #eb8;
+    border-radius: .5rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+}
+#mask {
+    background: rgba(0, 0, 0, .6);
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+}
+#modal {
+    background: #fff;
+    max-width: 36rem;
+    padding: 2rem;
+    border-radius: .5rem;
+    position: absolute;
+    margin: auto;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+}
 #top img{
     width: 100%;
     max-width: 1360px;
@@ -151,6 +179,7 @@ table{
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     padding: 2rem 0rem 2rem 0rem;
     width: 50%;
+    text-align: left;
 }
 .info tr:last-child th{
     border-bottom: none;
@@ -165,6 +194,35 @@ table{
 }
 .map iframe{
     width: 600px;
+}
+#contact-form{
+    max-width: 600px;
+    margin-left: 5rem;
+}
+#contact-form textarea,
+#contact-form button,
+#contact-form select,
+#contact-form input{
+    width: 100%;
+    border: 1px solid #dcddbd;
+    margin-bottom: 1rem;
+}
+#contact-form textarea{
+    resize: vertical;
+    max-height: 100px;
+}
+/* contact-form 内のチェックボックスとラジオボタン専用の調整 */
+#contact-form input[type="checkbox"],
+#contact-form input[type="radio"] {
+/* width: 100% などの共通指定を打ち消し、
+     チェックボックス本来のサイズに戻す */
+width: auto;
+/* 他の input に指定している padding を無効化し、
+     余白によるズレを防ぐ */padding: 0;
+
+/* テキスト入力用の枠線が
+     チェックボックスに適用されないようにする */
+border: 0;
 }
 @media (max-width: 600px){
 .product-list{
@@ -217,6 +275,9 @@ table{
     margin: 0 25vw;
     width: 120%;
 }
+.item-text table{
+    margin: 0px;
+}
 .info th{
     max-width: 80px;
 }
@@ -227,7 +288,10 @@ table{
 }
 .info td{
     border-bottom: 1px solid rgba(0,0,0,0.2);
-    padding: 10px 10px 10px 10px;
+    padding: 5px 10px 10px 10px;
+}
+.info th {
+    border: none;
 }
 .map{
     margin-left: 3rem;
