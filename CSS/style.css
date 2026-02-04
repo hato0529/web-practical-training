@@ -105,36 +105,10 @@
     gap: 15px;
     list-style: none;
 }
-.product-list img{
-}
+/* .product-list img{
+} */
 /* モーダル */
-#open,
-#close {
-    background: #ed8;
-    border: 3px solid #eb8;
-    border-radius: .5rem;
-    padding: 1rem 2rem;
-    cursor: pointer;
-}
-#mask {
-    background: rgba(0, 0, 0, .6);
-    position: fixed;
-    inset: 0;
-    z-index: 9998;
-    opacity: 0;
-    visibility: hidden;
-}
-#modal {
-    background: #fff;
-    max-width: 36rem;
-    padding: 2rem;
-    border-radius: .5rem;
-    position: absolute;
-    margin: auto;
-    z-index: 9999;
-    opacity: 0;
-    visibility: hidden;
-}
+
 #top img{
     width: 100%;
     max-width: 1360px;
@@ -159,18 +133,16 @@
 /* item */
 .item{
     display: flex;
-    justify-content: space-between;
-    gap: 8rem;
-}
-.item-img{
-    width: 40%;
 }
 .item img{
     width: 100%;
-    margin: 0 100px;
+    margin-left: 4rem;
 }
-.item-text p{
-    width: 62%;
+.item-map{
+    margin-left: 3rem;
+}
+.item-map iframe{
+    
 }
 /* company */
 table{
@@ -231,7 +203,163 @@ width: auto;
      チェックボックスに適用されないようにする */
 border: 0;
 }
-/* モーダル */
+.interactive-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 16px;
+  padding: 40px;
+  background-color: #000000;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* サイズバリエーション */
+.grid-item[data-size="large"] {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.grid-item[data-size="medium"] {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.grid-item[data-size="small"] {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.grid-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.item-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    transparent 100%
+    );
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.grid-item:hover .item-overlay {
+    opacity: 1;
+}
+
+.grid-item:hover img {
+    transform: scale(1.1);
+}
+
+.item-overlay h3 {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0 0 8px 0;
+    transform: translateY(20px);
+    transition: transform 0.3s ease 0.1s;
+}
+
+.item-overlay p {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    margin: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s ease 0.15s;
+}
+
+.grid-item:hover .item-overlay h3,
+.grid-item:hover .item-overlay p {
+    transform: translateY(0);
+}
+
+/* ホバー時にグリッドを拡張 */
+.grid-item.expanded {
+    grid-column: span 2 !important;
+    grid-row: span 2 !important;
+    z-index: 10;
+}
+
+/* product2 */
+.smart-card-container {
+    display: flex;
+    justify-content: center;
+    padding: 60px;
+    background: #0a0a0a;
+}
+
+.smart-card {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.card-glow {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(
+    circle,
+    rgba(99, 102, 241, 0.6) 0%,
+    transparent 70%
+);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.smart-card:hover .card-glow {
+    opacity: 1;
+}
+
+.card-inner {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+}
+
+.card-icon {
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+.card-inner h3 {
+  color: #1a1a2e 0%;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.card-inner p {
+  color: #1a1a2e 0%;
+  font-size: 14px;
+}
 @media (max-width: 600px){
 .product-list{
         display: grid;
@@ -307,5 +435,13 @@ border: 0;
 .map iframe{
     width: 400px;
     height: 400px;
+}
+.interactive-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.grid-item[data-size="large"],
+.grid-item[data-size="medium"] {
+    grid-column: span 2;
 }
 }
