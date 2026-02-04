@@ -11,6 +11,10 @@
 #header{
     display: flex;
 }
+.link-text a{
+    text-decoration: none;
+    color: #333;
+}
 /* btn */
 .header {
     position: relative;
@@ -100,6 +104,8 @@
     grid-template-columns: repeat(4,1fr);
     gap: 15px;
     list-style: none;
+}
+.product-list img{
 }
 /* モーダル */
 #open,
@@ -199,7 +205,6 @@ table{
     max-width: 600px;
     margin-left: 5rem;
 }
-#contact-form textarea,
 #contact-form button,
 #contact-form select,
 #contact-form input{
@@ -208,8 +213,10 @@ table{
     margin-bottom: 1rem;
 }
 #contact-form textarea{
-    resize: vertical;
-    max-height: 100px;
+    width: 100%;
+    border: 1px solid #dcddbd;
+    margin-bottom: 1rem;
+    height: 100px;
 }
 /* contact-form 内のチェックボックスとラジオボタン専用の調整 */
 #contact-form input[type="checkbox"],
@@ -224,6 +231,7 @@ width: auto;
      チェックボックスに適用されないようにする */
 border: 0;
 }
+/* モーダル */
 @media (max-width: 600px){
 .product-list{
         display: grid;
