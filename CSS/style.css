@@ -11,6 +11,10 @@
 #header{
     display: flex;
 }
+.site-title a{
+    text-decoration: none;
+    color: #000000;
+}
 .link-text a{
     text-decoration: none;
     color: #333;
@@ -105,16 +109,17 @@
     gap: 15px;
     list-style: none;
 }
-/* .product-list img{
-} */
+.product-list a{
+    text-decoration: none;
+}
 /* モーダル */
 
 #top img{
     width: 100%;
     max-width: 1360px;
     margin: 0 auto;
-    /* border: 3px solid rgb(189, 126, 45);
-    border-radius: 10px; */
+    border: 1px solid rgba(0, 0, 0,0.5);
+    border-radius: 10px;
 }
 .menu{
     display: flex;
@@ -134,15 +139,24 @@
 .item{
     display: flex;
 }
-.item img{
-    width: 100%;
-    margin-left: 4rem;
+.marqueer {
+	margin: 10px 0;
+	overflow: hidden;
 }
-.item-map{
-    margin-left: 3rem;
+.marqueer ul {
+	display: flex;
+	margin: 0;
+	padding: 0;
+	width: max-content;
 }
-.item-map iframe{
-    
+.marqueer ul li {
+	list-style: none;
+	padding: 0 5px; /* 余白 */
+	width: calc(100vw / 3 - 10px); /* 3 写真の枚数にあわせる */
+}
+.marqueer img {
+	display: block;
+	width: 100%;
 }
 /* company */
 table{
