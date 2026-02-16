@@ -296,24 +296,51 @@ border: 0;
 }
 
 /* product2 */
-.smart-card-container {
-    display: flex;
-    justify-content: center;
-    padding: 60px;
-    background: #0a0a0a;
-}
-
 .smart-card {
     position: relative;
-    width: 500px;
+    width: 100%;
     height: 500px;
-    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-    border-radius: 20px;
+    background: linear-gradient(135deg, #000000 0%, #000000 100%);
+    border: 1px solid rgb(rgb(65, 78, 255));
     overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.1s ease;
+    cursor: none;
+    /* transition: transform 0.1s ease; */
 }
-
+.num1{
+    position: relative;
+    top:12px;
+    right:54px;
+    bottom:313px;
+    left:545px;
+}
+.num2{
+    position: relative;
+    top:42px;
+    right:55px;
+    bottom:32px;
+    left:321px;
+}
+.num3{
+    position: absolute;
+    top:66px;
+    right:555px;
+    bottom:243px;
+    left:993px;
+}
+.num4{
+    position: absolute;
+    top: 400px;
+    right:121px;
+    bottom:555px;
+    left:1111px;
+}
+.num5{
+    position: absolute;
+    top:0;
+    right:2px;
+    bottom:3px;
+    left:50px;
+}
 .card-glow {
     position: absolute;
     width: 200px;
@@ -342,23 +369,29 @@ border: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-}
-
-.card-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.726);
 }
 .card-inner h3 {
     color: #1a1a2e 0%;
     font-size: 22px;
     margin-bottom: 12px;
 }
-
 .card-inner p {
     color: #1a1a2e 0%;
-    font-size: 14px;
+    font-size: 30px;
+}
+.result-style{
+    display: none;
+    text-decoration: none;
+    color: rgb(150, 60, 253);
+}
+#codeInput{
+    border: 1px solid rgb(118, 59, 255);
+    border-radius: 4px;
+}
+#checkBtn{
+    border: 1px solid rgb(118, 59, 255);
+    border-radius: 4px;
 }
 @media (max-width: 600px){
 .product-list{

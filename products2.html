@@ -35,11 +35,38 @@
 <div class="smart-card" id="smartCard">
     <div class="card-glow"></div>
     <div class="card-inner">
-        <span class="card-icon"></span>
-        <h3>('v')</h3>
-        <p>ｳﾋﾟｯ</p>
+        <div class="num1"><p>m</p></div>
+        <div class="num2"><p>u</p></div>
+        <div class="num3"><p>s</p></div>
+        <div class="num4"><p>i</p></div>
+        <div class="num5"><p>c</p></div>
     </div>
 </div>
 </div>
-    </body>
+<div class="wrapper">
+    <input type="text" id="codeInput" placeholder="暗号を入力">
+    <button id="checkBtn">Check</button>
+    <p id="result"></p>
+    <a class="result-style" href="https://sp6.diverse.jp/">Link: Stream palette</a>
+</div>
+<script>
+    const correctCode = "music"; 
+
+    document.getElementById("checkBtn").addEventListener("click",()=>{
+    const input = document.getElementById("codeInput").value;
+    const result = document.getElementById("result");
+    const link = document.querySelector(".result-style");
+
+if (input === correctCode) {
+    result.textContent = "暗号が合致しました！";
+    link.style.display= "inline";
+    result.style.color = "green";
+} else {
+    result.textContent = "暗号が違います";
+    link.style.display = "none";
+    result.style.color = "red";
+}
+});
+</script>
+
 </html>
