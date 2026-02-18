@@ -85,7 +85,7 @@ window.addEventListener('load', function () {
 
 	let marqueeWidth = marquee.scrollWidth / 2;
 	let pos = direction === 'left' ? 0 : -marqueeWidth;
-	const pixelsPerFrame = marqueeWidth / (speedSeconds * 60);
+	const pixelsPerFrame = marqueeWidth / (speedSeconds * 120);
 
 	function animate() {
 		pos += direction === 'left' ? -pixelsPerFrame : pixelsPerFrame;
@@ -101,7 +101,85 @@ window.addEventListener('load', function () {
 	animate();
 });
 
+window.addEventListener("load", () => {
+  const container = document.querySelector(".smart-card");     // 単一要素でOK
+  const texts = Array.from(document.querySelectorAll("#card-text")); // 複数
+
+  const boxW = container.clientWidth;
+  const boxH = container.clientHeight;
+
+  // 各要素の状態（位置・速度）を作成
+  const speed = 2; // px/frame
+  const states = texts.map((el) => {
+    // 要素サイズ計測のため一度表示位置を(0,0)で初期化
+    el.style.left = "0px";
+    el.style.top = "0px";
+
+    const w = el.offsetWidth;
+    const h = el.offsetHeight;
+
+    const angle = Math.random() * Math.PI * 2;
+    const vx = Math.cos(angle) * speed;
+    const vy = Math.sin(angle) * speed;
+
+    
+    let x = Math.random() * Math.max(1, boxW - w);
+    let y = Math.random() * Math.max(1, boxH - h);
+
+    return { el, x, y, vx, vy, w, h };
+  });
+
+  function animate() {
+    for (const s of states) {
+      s.x += s.vx;
+      s.y += s.vy;
+
+      // 横方向の反射
+      if (s.x <= 0 || s.x >= boxW - s.w) {
+        s.vx *= -1;
+        s.x = Math.max(0, Math.min(s.x, boxW - s.w));
+      }
+      // 縦方向の反射
+      if (s.y <= 0 || s.y >= boxH - s.h) {
+        s.vy *= -1;
+        s.y = Math.max(0, Math.min(s.y, boxH - s.h));
+      }
+
+      // 位置反映
+      s.el.style.left = `${s.x}px`;
+      s.el.style.top = `${s.y}px`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+});
 
 
 
+// モーダル
+const openBtn = document.querySelector(".open-btn");
+const closeBtn = document.querySelector(".close-btn");
+const modal = document.querySelector(".modal");
+const modalContent = document.querySelector(".modal-content");
 
+//Openボタンをクリックしたらモーダルウィンドウを表示する
+openBtn.addEventListener("click", () => {
+  modal.classList.add("open");
+});
+
+//Closeボタンをクリックしたらモーダルウィンドウを非表示にする
+closeBtn.addEventListener("click", () => {
+  modal.classList.remove("open");
+});
+
+//背景をクリックしたらモーダルウィンドウを非表示にする
+modal.addEventListener("click", () => {
+  modal.classList.remove("open");
+});
+
+//コンテンツ部分をクリックしてもモーダルウィンドウを非表示にしないようにする
+modalContent.addEventListener("click", (e) => {
+  e.stopPropagation();
+});

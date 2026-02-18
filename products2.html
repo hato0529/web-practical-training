@@ -13,7 +13,7 @@
     </head>
     <body>
         <header id="header" class="wrapper">
-            <h1 class="site-title"><a href="index.html"><img src="img/logo.svg" alt="Furniture Design"></a></h1>
+            <h1 class="site-title"><a href="index.html">キーワードを探せ！</h1>
     <button class="hamburger" aria-label="メニュー" aria-controls="nav-menu" aria-expanded="false">
     <span class="hamburger__line"></span>
     <span class="hamburger__line"></span>
@@ -35,19 +35,32 @@
 <div class="smart-card" id="smartCard">
     <div class="card-glow"></div>
     <div class="card-inner">
-        <div class="num1"><p>m</p></div>
-        <div class="num2"><p>u</p></div>
-        <div class="num3"><p>s</p></div>
-        <div class="num4"><p>i</p></div>
-        <div class="num5"><p>c</p></div>
+        <div id ="card-text"><p>m</p></div>
+        <div id ="card-text"><p>u</p></div>
+        <div id ="card-text"><p>s</p></div>
+        <div id ="card-text"><p>i</p></div>
+        <div id ="card-text"><p>c</p></div>
     </div>
 </div>
 </div>
 <div class="wrapper">
     <input type="text" id="codeInput" placeholder="暗号を入力">
     <button id="checkBtn">Check　</button>
-    <p id="result"></p>
+    <br>
+    <div>
+        <button id="hinto-Btn">ヒント</button>
+        <a class="hinto-text">ヒント:5文字の英単語</a>
+    </div>
+        <p id="result"></p>
     <a class="result-style" href="https://sp6.diverse.jp/">Link: Stream palette</a>
+</div>
+    <div class="container">
+    <div class="modal">
+        <div class="modal-content">
+        <p>テキストテキスト</p>
+        <button type="button" class="close-btn">Close</button>
+        </div>
+    </div>
 </div>
 <script>
     const correctCode = "music"; 
@@ -56,17 +69,26 @@
     const input = document.getElementById("codeInput").value;
     const result = document.getElementById("result");
     const link = document.querySelector(".result-style");
+    const modal = document.querySelector(".modal");
+    const modalContent = document.querySelector(".modal-content");
 
 if (input === correctCode) {
     result.textContent = "暗号が合致しました！";
     link.style.display= "inline";
     result.style.color = "green";
+    ("open")
 } else {
     result.textContent = "暗号が違います";
     link.style.display = "none";
     result.style.color = "red";
 }
 });
+const hintoBtn = document.querySelector("#hinto-Btn");
+const hinto = document.querySelector(".hinto-text");
+
+hintoBtn.addEventListener("click",()=>{
+    hinto.style.display = "inline";
+})
 </script>
 
 </html>
