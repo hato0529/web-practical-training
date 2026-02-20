@@ -11,9 +11,9 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
     </head>
-    <body>
+    <body style="background-image: url(img/backgroud-img2.jpeg)">
         <header id="header" class="wrapper">
-            <h1 class="site-title"><a href="index.html">キーワードを探せ！</h1>
+            <h1 class="products2-title">キーワードを探せ！</h1>
     <button class="hamburger" aria-label="メニュー" aria-controls="nav-menu" aria-expanded="false">
     <span class="hamburger__line"></span>
     <span class="hamburger__line"></span>
@@ -24,10 +24,8 @@
     <ul class="nav__list">
         <li class="nav__item"><a href="index.html" class="nav__link">HOME</a></li>
         <li class="nav__item"><a href="item1.html" class="nav__link">ABOUT</a></li>
-        <li class="nav__item"><a href="company.html" class="nav__link">COMPANY</a></li>
         <li class="nav__item"><a href="contact.html" class="nav__link">CONTACT</a></li>
-        <li class="nav__item"><a href="products1.html" class="nav__link">products1</a></li>
-        <li class="nav__item"><a href="products2.html" class="nav__link">products2</a></li>
+        <li class="nav__item"><a href="products2.html" class="nav__link">products</a></li>
     </ul>
 
         </header>
@@ -45,7 +43,8 @@
 </div>
 <div class="wrapper">
     <input type="text" id="codeInput" placeholder="暗号を入力">
-    <button id="checkBtn">Check　</button>
+    <button id="checkBtn">Check　</button><br>
+    <textarea placeholder="メモに使ってください。" style="border: 1px solid rgb(118, 59, 255);border-radius: 2px;margin-top: 10px;"></textarea>
     <br>
     <div>
         <button id="hinto-Btn">ヒント</button>
@@ -57,7 +56,8 @@
     <div class="container">
     <div class="modal">
         <div class="modal-content">
-        <p>テキストテキスト</p>
+        <h2>My Favorite Music</h2>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/eVGqbsANeyE?si=dUHJdwxkRxvOVqrZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         <button type="button" class="close-btn">Close</button>
         </div>
     </div>
@@ -70,25 +70,29 @@
     const result = document.getElementById("result");
     const link = document.querySelector(".result-style");
     const modal = document.querySelector(".modal");
+    const closeBtn = document.querySelector(".close-btn");
     const modalContent = document.querySelector(".modal-content");
 
 if (input === correctCode) {
-    result.textContent = "暗号が合致しました！";
-    link.style.display= "inline";
-    result.style.color = "green";
-    ("open")
+    // result.textContent = "暗号が合致しました！";
+    // link.style.display= "inline";
+    // result.style.color = "green";
+    modal.classList.add("open");
 } else {
     result.textContent = "暗号が違います";
     link.style.display = "none";
     result.style.color = "red";
 }
+closeBtn.addEventListener("click", () => {
+modal.classList.remove("open");
+});
 });
 const hintoBtn = document.querySelector("#hinto-Btn");
 const hinto = document.querySelector(".hinto-text");
-
 hintoBtn.addEventListener("click",()=>{
     hinto.style.display = "inline";
-})
+});
+
 </script>
 
 </html>

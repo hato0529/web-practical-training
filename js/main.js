@@ -156,30 +156,66 @@ window.addEventListener("load", () => {
   animate();
 });
 
+(() => {
+  const SELECTOR = '.site-title';
+  const DURATION_MS = 900;
+  const CHARSET =
+    '!@#$%^&*()_+-=[]{};:,.<>/?|' +
+    '｡｢｣､･ｰ★◇≠';
 
+  const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
 
-// モーダル
-const openBtn = document.querySelector(".open-btn");
-const closeBtn = document.querySelector(".close-btn");
-const modal = document.querySelector(".modal");
-const modalContent = document.querySelector(".modal-content");
+  const runScrambleOnce = (el, duration = DURATION_MS) => {
+    const original = el.dataset.originalText ?? el.textContent;
+    if (!el.dataset.originalText) {
+      el.dataset.originalText = original;
+    }
 
-//Openボタンをクリックしたらモーダルウィンドウを表示する
-openBtn.addEventListener("click", () => {
-  modal.classList.add("open");
-});
+    let frame = 0;
+    const fps = 60;
+    const totalFrames = Math.max(1, Math.round((duration / 1000) * fps));
 
-//Closeボタンをクリックしたらモーダルウィンドウを非表示にする
-closeBtn.addEventListener("click", () => {
-  modal.classList.remove("open");
-});
+    const tick = () => {
+      const progress = frame / totalFrames;
+      const revealCount = Math.floor(original.length * progress);
 
-//背景をクリックしたらモーダルウィンドウを非表示にする
-modal.addEventListener("click", () => {
-  modal.classList.remove("open");
-});
+      let out = '';
+      for (let i = 0; i < original.length; i++) {
+        if (i < revealCount) {
+          out += original[i];
+        } else if (original[i] === ' ') {
+          out += ' ';
+        } else {
+          out += CHARSET[Math.floor(Math.random() * CHARSET.length)];
+        }
+      }
 
-//コンテンツ部分をクリックしてもモーダルウィンドウを非表示にしないようにする
-modalContent.addEventListener("click", (e) => {
-  e.stopPropagation();
-});
+      el.textContent = out;
+
+      frame++;
+      if (frame <= totalFrames) {
+        requestAnimationFrame(tick);
+      } else {
+        el.textContent = original;
+      }
+    };
+
+    requestAnimationFrame(tick);
+  };
+
+  const init = () => {
+    const targets = document.querySelectorAll(SELECTOR);
+    if (!targets.length) return;
+    targets.forEach(el => runScrambleOnce(el));
+    targets.forEach(el => {
+      el.addEventListener('mouseenter', () => runScrambleOnce(el));
+    });
+  };
+
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    init();
+  } else {
+    window.addEventListener('DOMContentLoaded', init, { once: true });
+  }
+})();
