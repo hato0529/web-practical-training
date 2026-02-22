@@ -236,8 +236,8 @@
 .marqueer {
 	margin: 10px 0;
 	overflow: hidden;
-    border-bottom: 3px dashed #000000;
-    border-top: 3px dashed #000000;
+    border-bottom: 2px solid #000000;
+    border-top: 2px solid #000000;
 }
 .marqueer ul {
     display: flex;
@@ -248,12 +248,12 @@
 .marqueer ul li {
     list-style: none;
 	padding: 0 ; /* 余白 */
-	width: calc(100vw / 3 - 10px); /* 3 写真の枚数にあわせる */
+	width: calc(100vw / 6 - 12px); /* 3 写真の枚数にあわせる */
 }
 .marqueer img {
     display: block;
-	width: 100%;
-    border: 3px solid #000000;
+	width: 200px;
+    border: 2px solid #000000;
 }
 /* company */
 table{
@@ -511,11 +511,53 @@ border: 0;
     list-style: disc;
 }
 .site-title {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
-  letter-spacing: .02em;
-  display: inline-block; /* なくてもOK */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
+    letter-spacing: .02em;
+    display: inline-block; /* なくてもOK */
+}
+/* プロフィール */
+.profile-wrapper{
+    margin: 50px;
+}
+.icon-img{
+}
+.main-profile{
+    
 }
 
+
+
+:root {
+  --frame-width: 17px;               /* 縁の太さ */
+  --frame-color: rgb(250,250,255);   /* 縁の色 */
+  --radius: 14px;                    /* 内側の角丸 */
+}
+
+.screen-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;               /* 下のUIを操作できるように */
+  /* 外側は直角のまま */
+}
+
+.screen-frame::before {
+  content: "";
+  position: absolute;
+  /* フレームの太さぶん内側に寄せる（＝穴の外周位置） */
+  inset: var(--frame-width);
+  border-radius: var(--radius);
+
+  box-shadow:
+    /* 外側のオーバーレイ（外向きスプレッド） */
+    0 0 0 9999px rgb(250, 250, 255),
+    /* 内向きの1pxライン（任意） */
+    inset 0 0 0 1px rgb(0,0,0),
+    /* 縁色（外向きスプレッドで作るリング） */
+    0 0 0 var(--frame-width) var(--frame-color);
+
+  background: transparent;
+}
 @media (max-width: 600px){
 .product-list{
         display: grid;

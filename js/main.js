@@ -166,6 +166,8 @@ window.addEventListener("load", () => {
   const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
   if (reduceMotion) return;
 
+  let initialized = false;
+
   const runScrambleOnce = (el, duration = DURATION_MS) => {
     const original = el.dataset.originalText ?? el.textContent;
     if (!el.dataset.originalText) {
@@ -219,3 +221,4 @@ window.addEventListener("load", () => {
     window.addEventListener('DOMContentLoaded', init, { once: true });
   }
 })();
+
