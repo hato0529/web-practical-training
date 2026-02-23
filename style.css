@@ -285,9 +285,21 @@ table{
     width: 600px;
 }
 #contact-form{
-    max-width: 400px;
     position: relative;
-    left: 100vh
+}
+.contact-flex{
+    display: flex;
+}
+#form{
+    margin-left: 350px;
+}
+.contact-img{
+    position: relative;
+    top: 150px;
+    left: 100px;
+    height: 400px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 #contact-form button,
 #contact-form select,
@@ -504,7 +516,8 @@ border: 0;
 }
 /* プロフィール */
 .main-hard{
-    margin-top: 100px;
+    position: relative;
+    bottom: 200px;
 }
 .main-hard li{
     margin-left: 18px;
@@ -520,10 +533,20 @@ border: 0;
     margin: 50px;
 }
 .icon-img{
+    position: relative;
+    left: 200px;
+    bottom: 50px;
+    border: 1px solid black;
+    border-radius: 4px;
 }
-.main-profile{
-    
+.icon-img img{
+    width: 400px;
+    height: 400px;
 }
+.profile-flex{
+    display: flex;
+}
+
 
 
 
@@ -534,21 +557,20 @@ border: 0;
 }
 
 .screen-frame {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;               /* 下のUIを操作できるように */
-  /* 外側は直角のまま */
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    pointer-events: none;               /* 下のUIを操作できるように */
 }
 
 .screen-frame::before {
-  content: "";
-  position: absolute;
+    content: "";
+    position: absolute;
   /* フレームの太さぶん内側に寄せる（＝穴の外周位置） */
-  inset: var(--frame-width);
-  border-radius: var(--radius);
+    inset: var(--frame-width);
+    border-radius: var(--radius);
 
-  box-shadow:
+    box-shadow:
     /* 外側のオーバーレイ（外向きスプレッド） */
     0 0 0 9999px rgb(250, 250, 255),
     /* 内向きの1pxライン（任意） */
@@ -556,8 +578,23 @@ border: 0;
     /* 縁色（外向きスプレッドで作るリング） */
     0 0 0 var(--frame-width) var(--frame-color);
 
-  background: transparent;
+    background: transparent;
 }
+.site-title::after {
+    content: "_";
+    animation: blink-fade 1s steps(2, jump-none) infinite;
+}
+
+span.blink {
+    animation: blink 1s infinite;
+}
+
+/* ふわっと消える/点くなら以下のkeyframesを差し替え */
+@keyframes blink-fade {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+}
+
 @media (max-width: 600px){
 .product-list{
         display: grid;
