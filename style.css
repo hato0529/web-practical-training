@@ -679,4 +679,8 @@ span.blink {
 .grid-item[data-size="medium"] {
     grid-column: span 2;
 }
+.marqueer img{
+    width: auto;
+    height: 100px;
+}
 }
